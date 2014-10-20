@@ -1,0 +1,40 @@
+<?php
+
+function drupal_diatem_getconfig_help($path, $arg) {
+    switch ($path) {
+	case "admin/help#drupal_diatem_getconfig":
+	    return '<p>' . t("Implémente un service REST sécurisé permettant de récupérer à distance la version de Drupal ainsi que des modules utilisés. <br><br>Url pour utiliser les services : <Url du site>sites/all/modules/drupal_diatem_getconfig/ en GET") . '</p>';
+	    break;
+    }
+}
+
+function drupal_diatem_getconfig_menu() {
+  $items = array();
+  $items['admin/config/services/drupal_diatem_getconfig'] = array(
+    'title' => 'Paramètres Diatem getConfig',
+    'description' => 'Configuration du service REST ',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('drupal_diatem_getconfig_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+function drupal_diatem_getconfig_form($form, &$form_state) {
+  $form['drupal_diatem_getconfig_clepublique'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Clé publique',
+    '#default_value' => variable_get('drupal_diatem_getconfig_clepublique'),
+    '#description' => 'Clé publique du service',
+    '#required' => TRUE,
+  );
+  $form['drupal_diatem_getconfig_cleprivee'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Clé privée',
+    '#default_value' => variable_get('drupal_diatem_getconfig_cleprivee'),
+    '#description' => 'Clé privée du service',
+    '#required' => TRUE,
+  );
+  return system_settings_form($form);
+}
