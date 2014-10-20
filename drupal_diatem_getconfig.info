@@ -1,0 +1,6 @@
+name = Diatem getConfig with REST
+description = Implémente un service REST sécurisé permettant de récupérer à distance la version de Drupal ainsi que des modules installés et activés. Url pour utiliser les services : <Url du site>sites/all/modules/drupal_diatem_getconfig/ en GET
+core = 7.x
+version = "0.0.0"
+
+configure = admin/config/services/drupal_diatem_getconfig
