@@ -28,6 +28,8 @@ class DrupalConfig {
 	ini_set('display_startup_errors', TRUE);
 
 	require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
+	require_once DRUPAL_ROOT.'/includes/common.inc';
+	require_once DRUPAL_ROOT.'/includes/module.inc';
 	drupal_bootstrap(DRUPAL_BOOTSTRAP_CONFIGURATION);
 	drupal_bootstrap(DRUPAL_BOOTSTRAP_PAGE_CACHE);
 	drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
